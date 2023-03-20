@@ -1,0 +1,4 @@
+/backend/.env
+.idea
+__pycache__
+backend/audios
