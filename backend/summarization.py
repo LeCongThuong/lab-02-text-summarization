@@ -13,6 +13,6 @@ class OpenAISummarazation:
   def summarize(self, content):
     response = openai.ChatCompletion.create(
       model=self.model_id,
-      messages=[{"role": "user", "content": f"Tóm tắt nội dung sau bằng tiếng việt: {content}"}]
+      messages=[{"role": "user", "content": f"Tóm tắt bằng tiếng việt ngắn gọn nội dung sau: {content}"}]
     )
     return response['choices'][0]['message']['content']

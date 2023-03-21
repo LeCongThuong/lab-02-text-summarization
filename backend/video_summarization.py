@@ -5,17 +5,20 @@ from pathlib import Path
 
 
 class VideoSummarization:
-    def __init__(self, mp3_dir, wav_dir, transcript_dir):
+    def __init__(self, mp3_dir="./audios/mp3", wav_dir="./audios/wav", transcript_dir="./audios/transcript"):
         self.ytb_dl = YoutubeDownload(mp3_dir)
         self.ad_to_txt = WhisperAudio(wav_dir, transcript_dir)
         self.sum_text = OpenAISummarazation()
 
-    def video_summarization(self, url):
+    def video_summarization(self, url, lang):
         audio_path = self.ytb_dl.get_videos_from_link(url)
-        text_list = self.ad_to_txt.audio_to_text(audio_path)
-        text_str = "".join(text_list)
-        result_str = self.sum_text.summarize(text_str)
-        return result_str
+        print("Download video: Done!")
+        text_list = self.ad_to_txt.audio_to_text(audio_path, lang)
+        print("Audio2Text: Done!")
+        content_str = "".join(text_list)
+        summarization_str = self.sum_text.summarize(content_str)
+        print("Summarization: Done!")
+        return content_str, summarization_str
 
 
 if __name__ == '__main__':
