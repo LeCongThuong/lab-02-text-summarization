@@ -25,7 +25,7 @@ if __name__ == '__main__':
     Path(mp3_dir).mkdir(exist_ok=True, parents=True)
     Path(wav_dir).mkdir(exist_ok=True, parents=True)
     Path(transcript_dir).mkdir(exist_ok=True, parents=True)
-    test_link = "https://www.youtube.com/watch?v=3JWTaaS7LdU"
+    test_link = "https://www.youtube.com/watch?v=CQ2LY_SbqwM"
     video_sum = VideoSummarization(mp3_dir, wav_dir, transcript_dir)
     sum_text = video_sum.video_summarization(test_link)
     print(sum_text)
